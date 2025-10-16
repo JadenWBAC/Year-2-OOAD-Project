@@ -52,8 +52,8 @@ public class TestBankingSystem {
         System.out.println("\n--- Testing Withdrawals ---");
         johnInvestment.withdraw(1000);
         johnSavings.withdraw(2000); // This should fail - below minimum
-        
-        // Test interest calculation (Polymorphism in action!)
+
+        // Test interest calculation for different account types
         System.out.println("\n--- Testing Interest Calculation ---");
         johnSavings.applyInterest(); // Individual rate: 0.025%
         acmeSavings.applyInterest(); // Company rate: 0.075%

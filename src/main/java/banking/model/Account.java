@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Abstract base class for all account types
- * Demonstrates: Abstraction, Encapsulation, Inheritance base
+ * Savings account with minimum balance and interest
+ * Extends Account class with specific interest rules
  */
 public abstract class Account {
     // Encapsulated attributes
@@ -23,8 +23,8 @@ public abstract class Account {
         this.customer = customer;
         this.transactions = new ArrayList<>();
     }
-    
-    // Getters and Setters (Encapsulation)
+
+    // Getters and Setters
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -48,8 +48,8 @@ public abstract class Account {
     public List<Transaction> getTransactions() {
         return new ArrayList<>(transactions); // Return copy for safety
     }
-    
-    // Abstract methods (Abstraction) - must be implemented by subclasses
+
+    // Abstract methods - must be implemented by subclasses
     public abstract double calculateInterest();
     public abstract double getMinimumBalance();
     

@@ -17,7 +17,7 @@ public class SavingsAccount extends Account {
     
     @Override
     public double calculateInterest() {
-        // Different rates for Individual vs Company customers (Polymorphism)
+        // Calculate interest based on customer type
         if (getCustomer() instanceof IndividualCustomer) {
             return getBalance() * 0.00025; // 0.025% monthly
         } else if (getCustomer() instanceof CompanyCustomer) {

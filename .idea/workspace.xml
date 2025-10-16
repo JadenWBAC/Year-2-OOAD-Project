@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/AccountDetailsView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/BankingApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/TellerDashboardView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/Account.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/CheckingAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/CompanyCustomer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/Customer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/IndividualCustomer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/InvestmentAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/SavingsAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/AccountDetailsView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/BankingApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/CustomerDashboardView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/LoginView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/TellerDashboardView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/CheckingAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/CheckingAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/CompanyCustomer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/CompanyCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/CompanyCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/IndividualCustomer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/IndividualCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/IndividualCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/InvestmentAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/InvestmentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/InvestmentAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/SavingsAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/SavingsAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/Transaction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/test/TestBankingSystem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banking/test/TestBankingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/banking/test/TestBankingSystem.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="347pxiHmwcsn5ejMwEuvJKCUcw8" />
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Banking Application.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BankingApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.BankingSystem [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\75751\IdeaProjects\Year-2-OOAD-Project\src\main\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="banking.test" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Banking Application" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="banking.view.BankingApplication" />
+      <module name="BankingSystem" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../../../../javafx-sdk-25/lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Year-2-OOAD-Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Year-2-OOAD-Project" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="" />
+      <created>1760574717707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1760574717707</updated>
+      <workItem from="1760574742706" duration="5696000" />
+      <workItem from="1760615211451" duration="315000" />
+      <workItem from="1760619052883" duration="943000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
