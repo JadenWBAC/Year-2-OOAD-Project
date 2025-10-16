@@ -5,52 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/AccountDetailsView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/BankingApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/view/TellerDashboardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/Account.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/CheckingAccount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/CompanyCustomer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/Customer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/IndividualCustomer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/InvestmentAccount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/SavingsAccount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/model/Transaction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/AccountDetailsView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/BankingApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/CustomerDashboardView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/LoginView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/banking/view/TellerDashboardView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/CheckingAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/CheckingAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/CompanyCustomer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/CompanyCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/CompanyCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/IndividualCustomer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/IndividualCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/IndividualCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/InvestmentAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/InvestmentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/InvestmentAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/SavingsAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/SavingsAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/model/Transaction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/banking/test/TestBankingSystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/test/TestBankingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/banking/test/TestBankingSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +100,7 @@
       <updated>1760574717707</updated>
       <workItem from="1760574742706" duration="5696000" />
       <workItem from="1760615211451" duration="315000" />
-      <workItem from="1760619052883" duration="943000" />
+      <workItem from="1760619052883" duration="1250000" />
     </task>
     <servers />
   </component>
