@@ -3,6 +3,7 @@ package banking.view;
 import banking.controller.CustomerDashboardController;
 import banking.model.IndividualCustomer;
 import banking.model.InvestmentAccount;
+import banking.model.CheckingAccount;
 import banking.model.SavingsAccount;
 import javafx.animation.PauseTransition;
 import javafx.geometry.Insets;
@@ -155,8 +156,13 @@ public class LoginView {
             // Add sample accounts
             SavingsAccount savings = new SavingsAccount("ACC001", 1500.0, "Main Branch", customer);
             InvestmentAccount investment = new InvestmentAccount("ACC002", 5000.0, "Main Branch", customer);
+            CheckingAccount checking = new CheckingAccount("ACC003", 0.0, "Main Branch", customer,
+                    "Tech Solutions Ltd", "Plot 789, Gaborone");
+            checking.deposit(3000.0); // Add initial salary deposit
+
             customer.addAccount(savings);
             customer.addAccount(investment);
+            customer.addAccount(checking);
             return customer;
         } else if (username.equals("Theo")) {
             IndividualCustomer customer = new IndividualCustomer(
@@ -164,10 +170,15 @@ public class LoginView {
                     "Plot 456, Francistown", "71234568", "theo@email.com"
             );
             // Add sample accounts
-            SavingsAccount savings = new SavingsAccount("ACC003", 2500.0, "Main Branch", customer);
-            InvestmentAccount investment = new InvestmentAccount("ACC004", 7500.0, "Main Branch", customer);
+            SavingsAccount savings = new SavingsAccount("ACC004", 2500.0, "Main Branch", customer);
+            InvestmentAccount investment = new InvestmentAccount("ACC005", 7500.0, "Main Branch", customer);
+            CheckingAccount checking = new CheckingAccount("ACC006", 0.0, "Main Branch", customer,
+                    "Finance Corp", "Plot 321, Francistown");
+            checking.deposit(4500.0); // Add initial salary deposit
+
             customer.addAccount(savings);
             customer.addAccount(investment);
+            customer.addAccount(checking);
             return customer;
         } else {
             // Default customer for other usernames
@@ -176,8 +187,13 @@ public class LoginView {
                     "123 Main St", "71000000", username + "@email.com"
             );
             // Add sample accounts
-            SavingsAccount savings = new SavingsAccount("ACC005", 1000.0, "Main Branch", customer);
+            SavingsAccount savings = new SavingsAccount("ACC007", 1000.0, "Main Branch", customer);
+            CheckingAccount checking = new CheckingAccount("ACC008", 0.0, "Main Branch", customer,
+                    "Generic Company", "123 Business Park");
+            checking.deposit(2000.0); // Add initial salary deposit
+
             customer.addAccount(savings);
+            customer.addAccount(checking);
             return customer;
         }
     }

@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/controller/AccountDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/controller/CustomerDashboardController.java" afterDir="false" />
+    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="Added controller classes as well as updated some relevant data within the project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/AccountDetailsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/AccountDetailsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/banking/test/TestBankingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/banking/test/TestBankingSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +23,21 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JadenWBAC"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JadenWBAC/Year-2-OOAD-Project",
+    "accountId": "30c9bec9-3d8f-4f8e-a674-c2be04a4a390"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -108,11 +120,32 @@
       <workItem from="1760736523717" duration="868000" />
       <workItem from="1760988683657" duration="804000" />
       <workItem from="1761058815600" duration="21000" />
-      <workItem from="1761132105080" duration="3149000" />
+      <workItem from="1761132105080" duration="4526000" />
     </task>
+    <task id="LOCAL-00001" summary="Added controller classes as well as updated some relevant data within the project">
+      <option name="closed" value="true" />
+      <created>1761135583088</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761135583088</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added controller classes as well as updated some relevant data within the project">
+      <option name="closed" value="true" />
+      <created>1761135622528</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761135622528</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added controller classes as well as updated some relevant data within the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added controller classes as well as updated some relevant data within the project" />
   </component>
 </project>
