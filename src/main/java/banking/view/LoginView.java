@@ -1,5 +1,9 @@
 package banking.view;
 
+import banking.controller.CustomerDashboardController;
+import banking.model.IndividualCustomer;
+import banking.model.InvestmentAccount;
+import banking.model.SavingsAccount;
 import javafx.animation.PauseTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -108,7 +112,7 @@ public class LoginView {
             return;
         }
 
-        // Simulate authentication (I'll replace this with real auth later)
+        // Simulate authentication
         if (authenticateUser(username, password, userType)) {
             showMessage("Login successful!", true);
 
@@ -119,7 +123,11 @@ public class LoginView {
                     TellerDashboardView dashboard = new TellerDashboardView(stage);
                     dashboard.show();
                 } else {
-                    CustomerDashboardView dashboard = new CustomerDashboardView(stage);
+                    // Create customer based on username
+                    IndividualCustomer customer = createCustomerForUsername(username);
+
+                    CustomerDashboardController controller = new CustomerDashboardController(customer, stage);
+                    CustomerDashboardView dashboard = new CustomerDashboardView(stage, controller);
                     dashboard.show();
                 }
             });
@@ -135,6 +143,43 @@ public class LoginView {
                 username.equals("Jaden") && password.equals("021103") && userType.equals("Bank Teller") ||
                 (username.equals("Admin") && password.equals("admin123") && userType.equals("Bank Teller")) ||
                 (username.equals("Theo") && password.equals("Theo2024") && userType.equals("Customer"));
+    }
+
+    private IndividualCustomer createCustomerForUsername(String username) {
+        // Create customer with appropriate details based on username
+        if (username.equals("Jacob")) {
+            IndividualCustomer customer = new IndividualCustomer(
+                    "CUST001", "Jacob", "Smith", "ID123456",
+                    "Plot 123, Gaborone", "71234567", "jacob@email.com"
+            );
+            // Add sample accounts
+            SavingsAccount savings = new SavingsAccount("ACC001", 1500.0, "Main Branch", customer);
+            InvestmentAccount investment = new InvestmentAccount("ACC002", 5000.0, "Main Branch", customer);
+            customer.addAccount(savings);
+            customer.addAccount(investment);
+            return customer;
+        } else if (username.equals("Theo")) {
+            IndividualCustomer customer = new IndividualCustomer(
+                    "CUST002", "Theo", "Johnson", "ID789012",
+                    "Plot 456, Francistown", "71234568", "theo@email.com"
+            );
+            // Add sample accounts
+            SavingsAccount savings = new SavingsAccount("ACC003", 2500.0, "Main Branch", customer);
+            InvestmentAccount investment = new InvestmentAccount("ACC004", 7500.0, "Main Branch", customer);
+            customer.addAccount(savings);
+            customer.addAccount(investment);
+            return customer;
+        } else {
+            // Default customer for other usernames
+            IndividualCustomer customer = new IndividualCustomer(
+                    "CUST003", username, "User", "ID000000",
+                    "123 Main St", "71000000", username + "@email.com"
+            );
+            // Add sample accounts
+            SavingsAccount savings = new SavingsAccount("ACC005", 1000.0, "Main Branch", customer);
+            customer.addAccount(savings);
+            return customer;
+        }
     }
 
     private void clearForm() {

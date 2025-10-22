@@ -5,20 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/banking/model/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/CheckingAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/CompanyCustomer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/IndividualCustomer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/InvestmentAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/SavingsAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/model/Transaction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banking/test/TestBankingSystem.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/controller/AccountDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/controller/CustomerDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/AccountDetailsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/AccountDetailsView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -100,7 +104,11 @@
       <updated>1760574717707</updated>
       <workItem from="1760574742706" duration="5696000" />
       <workItem from="1760615211451" duration="315000" />
-      <workItem from="1760619052883" duration="1250000" />
+      <workItem from="1760619052883" duration="2341000" />
+      <workItem from="1760736523717" duration="868000" />
+      <workItem from="1760988683657" duration="804000" />
+      <workItem from="1761058815600" duration="21000" />
+      <workItem from="1761132105080" duration="3149000" />
     </task>
     <servers />
   </component>
