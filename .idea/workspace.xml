@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="Added controller classes as well as updated some relevant data within the project">
+    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="Updated a value in LoginView and the Test class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/banking/controller/TellerDashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/TellerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/TellerDashboardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/banking/test/TestBankingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/banking/test/TestBankingSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,27 +50,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Banking Application.executor&quot;: &quot;Run&quot;,
-    &quot;Application.BankingApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BankingSystem [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Banking Application.executor": "Run",
+    "Application.BankingApplication.executor": "Run",
+    "Application.TestBankingSystem.executor": "Run",
+    "Maven.BankingSystem [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\75751\IdeaProjects\Year-2-OOAD-Project\src\main\java" />
@@ -78,11 +80,24 @@
       <recent name="banking.test" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Banking Application">
     <configuration name="Banking Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="banking.view.BankingApplication" />
       <module name="BankingSystem" />
       <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../../../../javafx-sdk-25/lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBankingSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="banking.test.TestBankingSystem" />
+      <module name="BankingSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="banking.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,6 +113,11 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestBankingSystem" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -120,7 +140,7 @@
       <workItem from="1760736523717" duration="868000" />
       <workItem from="1760988683657" duration="804000" />
       <workItem from="1761058815600" duration="21000" />
-      <workItem from="1761132105080" duration="4526000" />
+      <workItem from="1761132105080" duration="6458000" />
     </task>
     <task id="LOCAL-00001" summary="Added controller classes as well as updated some relevant data within the project">
       <option name="closed" value="true" />
@@ -138,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761135622528</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated a value in LoginView and the Test class">
+      <option name="closed" value="true" />
+      <created>1761137069573</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761137069573</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +174,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added controller classes as well as updated some relevant data within the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added controller classes as well as updated some relevant data within the project" />
+    <MESSAGE value="Updated a value in LoginView and the Test class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated a value in LoginView and the Test class" />
   </component>
 </project>

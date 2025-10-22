@@ -41,13 +41,15 @@ public class TestBankingSystem {
         john.addAccount(johnInvestment);
         john.addAccount(johnChecking);
 
-        // Create account for ACME
+        // Create account for ACME (UPDATED with Investment Account)
         System.out.println("\n--- Creating account for " + acmeCorp.getName() + " ---");
         SavingsAccount acmeSavings = new SavingsAccount("ACC004", 10000, "Main Branch", acmeCorp);
-        CheckingAccount acmeChecking = new CheckingAccount("ACC005", 0, "Main Branch", acmeCorp,
+        InvestmentAccount acmeInvestment = new InvestmentAccount("ACC005", 25000, "Main Branch", acmeCorp); // NEW
+        CheckingAccount acmeChecking = new CheckingAccount("ACC006", 0, "Main Branch", acmeCorp,
                 "ACME Corporation", "Plot 456, Gaborone");
 
         acmeCorp.addAccount(acmeSavings);
+        acmeCorp.addAccount(acmeInvestment); // NEW
         acmeCorp.addAccount(acmeChecking);
 
         // Test deposits
@@ -56,18 +58,21 @@ public class TestBankingSystem {
         acmeSavings.deposit(2000);
         johnChecking.deposit(3000); // Salary deposit
         acmeChecking.deposit(15000); // Business deposit
+        acmeInvestment.deposit(5000); // Investment deposit
 
         // Test withdrawals
         System.out.println("\n--- Testing Withdrawals ---");
         johnInvestment.withdraw(1000);
         johnSavings.withdraw(2000); // This should fail - below minimum
         johnChecking.withdraw(500); // Should work - no minimum balance
+        acmeInvestment.withdraw(3000); // Investment withdrawal
 
         // Test interest calculation for different account types
         System.out.println("\n--- Testing Interest Calculation ---");
         johnSavings.applyInterest(); // Individual rate: 0.025%
         acmeSavings.applyInterest(); // Company rate: 0.075%
         johnInvestment.applyInterest(); // Investment rate: 5%
+        acmeInvestment.applyInterest(); // Investment rate: 5% for company
         johnChecking.applyInterest(); // Should be 0 (no interest)
 
         // Print statements
@@ -76,6 +81,7 @@ public class TestBankingSystem {
         johnInvestment.printStatement();
         johnChecking.printStatement();
         acmeSavings.printStatement();
+        acmeInvestment.printStatement();
         acmeChecking.printStatement();
 
         System.out.println("\n=== TEST COMPLETE ===");
