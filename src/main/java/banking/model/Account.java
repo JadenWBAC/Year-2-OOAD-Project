@@ -122,4 +122,8 @@ public abstract class Account {
         }
         System.out.println("========================\n");
     }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = new ArrayList<>(transactions);
+    }
 }

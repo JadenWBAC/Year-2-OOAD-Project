@@ -1,5 +1,7 @@
 package banking.controller;
 
+import banking.dao.*;
+import banking.dao.impl.*;
 import banking.model.*;
 import banking.view.*;
 import javafx.stage.Stage;
@@ -8,51 +10,51 @@ import java.util.List;
 
 public class TellerDashboardController {
     private Stage stage;
+    private CustomerDAO customerDAO;
+    private AccountDAO accountDAO;
     private List<Customer> customers;
 
     public TellerDashboardController(Stage stage) {
         this.stage = stage;
+        this.customerDAO = new TextFileCustomerDAO();
+        this.accountDAO = new TextFileAccountDAO();
         this.customers = new ArrayList<>();
-        // Add some sample customers for demonstration
-        initializeSampleData();
+
+        // Load ALL data from text files
+        loadAllDataFromFiles();
+
+        // If no data exists, initialize sample data directly to files
+        if (customers.isEmpty()) {
+            initializeSampleDataInFiles();
+            // Reload after creating sample data
+            loadAllDataFromFiles();
+        }
     }
 
-    private void initializeSampleData() {
-        // Individual Customer 1 - John Doe
-        IndividualCustomer john = new IndividualCustomer(
-                "CUST001", "John", "Doe", "ID123456",
-                "Plot 123, Gaborone", "71234567", "john@email.com"
-        );
-        john.addAccount(new SavingsAccount("ACC001", 1500.0, "Main Branch", john));
-        john.addAccount(new InvestmentAccount("ACC002", 5000.0, "Main Branch", john));
-        john.addAccount(new CheckingAccount("ACC003", 3000.0, "Main Branch", john,
-                "Tech Solutions Ltd", "Plot 789, Gaborone"));
+    private void loadAllDataFromFiles() {
+        System.out.println("Loading data from text files...");
 
-        // Individual Customer 2 - Sarah Wilson (UPDATED with Investment Account)
-        IndividualCustomer sarah = new IndividualCustomer(
-                "CUST002", "Sarah", "Wilson", "ID789012",
-                "Plot 456, Francistown", "71234568", "sarah@email.com"
-        );
-        sarah.addAccount(new SavingsAccount("ACC004", 2500.0, "Main Branch", sarah));
-        sarah.addAccount(new InvestmentAccount("ACC005", 6000.0, "Main Branch", sarah)); // NEW Investment Account
-        sarah.addAccount(new CheckingAccount("ACC006", 4000.0, "Main Branch", sarah,
-                "Finance Corp", "Plot 321, Francistown"));
+        // Load customers
+        this.customers = customerDAO.findAllCustomers();
+        System.out.println("Loaded " + customers.size() + " customers");
 
-        // Company Customer - ACME Corporation (UPDATED with Investment Account)
-        CompanyCustomer acmeCorp = new CompanyCustomer(
-                "CUST003", "ACME Corporation", "CO123456",
-                "Plot 789, Gaborone", "3901234", "info@acme.co.bw"
-        );
-        acmeCorp.addAccount(new SavingsAccount("ACC007", 15000.0, "Main Branch", acmeCorp));
-        acmeCorp.addAccount(new InvestmentAccount("ACC008", 30000.0, "Main Branch", acmeCorp)); // NEW Investment Account
-        acmeCorp.addAccount(new CheckingAccount("ACC009", 25000.0, "Main Branch", acmeCorp,
-                "ACME Corporation", "Plot 789, Gaborone"));
-
-        customers.add(john);
-        customers.add(sarah);
-        customers.add(acmeCorp);
+        // Load accounts for each customer
+        for (Customer customer : customers) {
+            List<Account> customerAccounts = accountDAO.findAccountsByCustomer(customer.getCustomerId());
+            for (Account account : customerAccounts) {
+                customer.addAccount(account);
+            }
+            System.out.println("Customer " + customer.getName() + " has " + customerAccounts.size() + " accounts");
+        }
     }
 
+    private void initializeSampleDataInFiles() {
+        System.out.println("No data found. Creating sample data in text files...");
+        DataInitializer initializer = new DataInitializer();
+        initializer.initializeSampleData();
+    }
+
+    // REST OF YOUR EXISTING METHODS STAY EXACTLY THE SAME
     public List<Customer> getAllCustomers() {
         return new ArrayList<>(customers);
     }
@@ -75,17 +77,22 @@ public class TellerDashboardController {
 
     public void createNewCustomer(Customer customer) {
         customers.add(customer);
+        customerDAO.saveCustomer(customer);
     }
 
     public void openNewAccount(Customer customer, Account account) {
         customer.addAccount(account);
+        accountDAO.saveAccount(account);
     }
 
     public boolean processDeposit(String accountNumber, double amount) {
         Customer customer = findCustomerByAccount(accountNumber);
         if (customer != null) {
             Account account = customer.getAccountByNumber(accountNumber);
-            return account != null && account.deposit(amount);
+            if (account != null && account.deposit(amount)) {
+                accountDAO.updateAccount(account);
+                return true;
+            }
         }
         return false;
     }
@@ -94,7 +101,10 @@ public class TellerDashboardController {
         Customer customer = findCustomerByAccount(accountNumber);
         if (customer != null) {
             Account account = customer.getAccountByNumber(accountNumber);
-            return account != null && account.withdraw(amount);
+            if (account != null && account.withdraw(amount)) {
+                accountDAO.updateAccount(account);
+                return true;
+            }
         }
         return false;
     }
@@ -103,6 +113,7 @@ public class TellerDashboardController {
         for (Customer customer : customers) {
             for (Account account : customer.getAccounts()) {
                 account.applyInterest();
+                accountDAO.updateAccount(account);
             }
         }
     }

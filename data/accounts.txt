@@ -1,0 +1,8 @@
+ACC001|CUST001|SavingsAccount|1500.38|Main Branch||
+ACC002|CUST001|InvestmentAccount|5250.00|Main Branch||
+ACC003|CUST001|CheckingAccount|3000.00|Main Branch|Tech Solutions Ltd|Plot 789, Gaborone
+ACC004|CUST002|SavingsAccount|2500.63|Main Branch||
+ACC005|CUST002|CheckingAccount|4000.00|Main Branch|Finance Corp|Plot 321, Francistown
+ACC006|CUST003|SavingsAccount|15011.25|Main Branch||
+ACC007|CUST003|InvestmentAccount|31500.00|Main Branch||
+ACC008|CUST003|CheckingAccount|25000.00|Main Branch|ACME Corporation|Plot 789, Gaborone
