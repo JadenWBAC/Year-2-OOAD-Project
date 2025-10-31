@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="Updated TellerDashboard, added a controller for it as well as updated Test once more">
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/dao/AccountDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/dao/CustomerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/dao/TransactionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/dao/impl/DataInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/dao/impl/TextFileAccountDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/dao/impl/TextFileCustomerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banking/dao/impl/TextFileTransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/controller/TellerDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/controller/TellerDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/banking/view/TellerDashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/banking/view/TellerDashboardView.class" afterDir="false" />
-    </list>
+    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="Updated DAO, Creating text files and adding data for database" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +139,7 @@
       <workItem from="1761132105080" duration="7202000" />
       <workItem from="1761290356096" duration="2950000" />
       <workItem from="1761730949950" duration="629000" />
-      <workItem from="1761943105394" duration="4210000" />
+      <workItem from="1761943105394" duration="4999000" />
     </task>
     <task id="LOCAL-00001" summary="Added controller classes as well as updated some relevant data within the project">
       <option name="closed" value="true" />
@@ -185,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761139361480</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated DAO, Creating text files and adding data for database">
+      <option name="closed" value="true" />
+      <created>1761948341767</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1761948341767</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +191,7 @@
     <MESSAGE value="Added controller classes as well as updated some relevant data within the project" />
     <MESSAGE value="Updated a value in LoginView and the Test class" />
     <MESSAGE value="Updated TellerDashboard, added a controller for it as well as updated Test once more" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated TellerDashboard, added a controller for it as well as updated Test once more" />
+    <MESSAGE value="Updated DAO, Creating text files and adding data for database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated DAO, Creating text files and adding data for database" />
   </component>
 </project>

@@ -20,23 +20,19 @@ public class TellerDashboardController {
         this.accountDAO = new TextFileAccountDAO();
         this.customers = new ArrayList<>();
 
-        // Load ALL data from text files
+        // Simply load data from existing text files
         loadAllDataFromFiles();
 
-        // If no data exists, initialize sample data directly to files
-        if (customers.isEmpty()) {
-            initializeSampleDataInFiles();
-            // Reload after creating sample data
-            loadAllDataFromFiles();
-        }
+        // DataInitializer is no longer needed here!
+        // Files already exist with sample data
     }
 
     private void loadAllDataFromFiles() {
         System.out.println("Loading data from text files...");
 
-        // Load customers
+        // Load customers from existing files
         this.customers = customerDAO.findAllCustomers();
-        System.out.println("Loaded " + customers.size() + " customers");
+        System.out.println("Loaded " + customers.size() + " customers from files");
 
         // Load accounts for each customer
         for (Customer customer : customers) {
@@ -48,13 +44,7 @@ public class TellerDashboardController {
         }
     }
 
-    private void initializeSampleDataInFiles() {
-        System.out.println("No data found. Creating sample data in text files...");
-        DataInitializer initializer = new DataInitializer();
-        initializer.initializeSampleData();
-    }
-
-    // REST OF YOUR EXISTING METHODS STAY EXACTLY THE SAME
+    // REST OF YOUR METHODS STAY EXACTLY THE SAME
     public List<Customer> getAllCustomers() {
         return new ArrayList<>(customers);
     }
