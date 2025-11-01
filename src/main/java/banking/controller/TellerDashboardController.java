@@ -20,11 +20,8 @@ public class TellerDashboardController {
         this.accountDAO = new TextFileAccountDAO();
         this.customers = new ArrayList<>();
 
-        // Simply load data from existing text files
+        // Load all data from existing text files
         loadAllDataFromFiles();
-
-        // DataInitializer is no longer needed here!
-        // Files already exist with sample data
     }
 
     private void loadAllDataFromFiles() {
@@ -44,7 +41,6 @@ public class TellerDashboardController {
         }
     }
 
-    // REST OF YOUR METHODS STAY EXACTLY THE SAME
     public List<Customer> getAllCustomers() {
         return new ArrayList<>(customers);
     }
@@ -73,6 +69,10 @@ public class TellerDashboardController {
     public void openNewAccount(Customer customer, Account account) {
         customer.addAccount(account);
         accountDAO.saveAccount(account);
+
+        // Reload customer accounts to ensure data is synchronized
+        List<Account> updatedAccounts = accountDAO.findAccountsByCustomer(customer.getCustomerId());
+        System.out.println("Account created. Customer now has " + updatedAccounts.size() + " accounts.");
     }
 
     public boolean processDeposit(String accountNumber, double amount) {
@@ -81,6 +81,7 @@ public class TellerDashboardController {
             Account account = customer.getAccountByNumber(accountNumber);
             if (account != null && account.deposit(amount)) {
                 accountDAO.updateAccount(account);
+                System.out.println("Deposit processed: P" + amount + " to account " + accountNumber);
                 return true;
             }
         }
@@ -93,6 +94,7 @@ public class TellerDashboardController {
             Account account = customer.getAccountByNumber(accountNumber);
             if (account != null && account.withdraw(amount)) {
                 accountDAO.updateAccount(account);
+                System.out.println("Withdrawal processed: P" + amount + " from account " + accountNumber);
                 return true;
             }
         }
@@ -100,11 +102,27 @@ public class TellerDashboardController {
     }
 
     public void applyInterestToAllAccounts() {
+        int accountsProcessed = 0;
         for (Customer customer : customers) {
             for (Account account : customer.getAccounts()) {
-                account.applyInterest();
-                accountDAO.updateAccount(account);
+                double interestBefore = account.calculateInterest();
+                if (interestBefore > 0) {
+                    account.applyInterest();
+                    accountDAO.updateAccount(account);
+                    accountsProcessed++;
+                    System.out.println("Interest applied to account " + account.getAccountNumber() +
+                            ": P" + String.format("%.2f", interestBefore));
+                }
             }
         }
+        System.out.println("Total accounts processed for interest: " + accountsProcessed);
+    }
+
+    /**
+     * Refresh customer data from files
+     */
+    public void refreshData() {
+        customers.clear();
+        loadAllDataFromFiles();
     }
 }

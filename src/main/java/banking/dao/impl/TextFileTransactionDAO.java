@@ -34,6 +34,7 @@ public class TextFileTransactionDAO implements TransactionDAO {
 
             writer.write(line);
             writer.newLine();
+            System.out.println("Transaction saved: " + transaction.getTransactionId() + " for account: " + accountNumber);
         } catch (IOException e) {
             System.err.println("Error saving transaction: " + e.getMessage());
         }
@@ -41,16 +42,44 @@ public class TextFileTransactionDAO implements TransactionDAO {
 
     @Override
     public List<Transaction> findTransactionsByAccount(String accountNumber) {
-        List<Transaction> allTransactions = findAllTransactions();
         List<Transaction> accountTransactions = new ArrayList<>();
+        File file = new File(TRANSACTIONS_FILE);
+        if (!file.exists()) return accountTransactions;
 
-        for (Transaction transaction : allTransactions) {
-            // We need to parse the account number from the transaction data
-            // This is a bit tricky since we don't store it directly in Transaction object
-            // For now, we'll filter by the account number in the file
-            if (getAccountNumberFromTransaction(transaction).equals(accountNumber)) {
-                accountTransactions.add(transaction);
+        try (BufferedReader reader = new BufferedReader(new FileReader(TRANSACTIONS_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().isEmpty()) continue;
+
+                String[] parts = line.split("\\|");
+                if (parts.length >= 6) {
+                    String fileAccountNumber = parts[1]; // Account number is at index 1
+
+                    // Only include transactions for this specific account
+                    if (fileAccountNumber.equals(accountNumber)) {
+                        String transactionId = parts[0];
+                        String type = parts[2];
+                        double amount = Double.parseDouble(parts[3]);
+                        double balanceAfter = Double.parseDouble(parts[4]);
+                        LocalDateTime timestamp = LocalDateTime.parse(parts[5], formatter);
+
+                        Transaction transaction = new Transaction(transactionId, type, amount, balanceAfter);
+
+                        // Set the timestamp using reflection since it's final
+                        try {
+                            java.lang.reflect.Field timestampField = Transaction.class.getDeclaredField("timestamp");
+                            timestampField.setAccessible(true);
+                            timestampField.set(transaction, timestamp);
+                        } catch (Exception e) {
+                            System.err.println("Could not set timestamp: " + e.getMessage());
+                        }
+
+                        accountTransactions.add(transaction);
+                    }
+                }
             }
+        } catch (IOException e) {
+            System.err.println("Error reading transactions for account " + accountNumber + ": " + e.getMessage());
         }
         return accountTransactions;
     }
@@ -92,11 +121,5 @@ public class TextFileTransactionDAO implements TransactionDAO {
             System.err.println("Error reading transactions: " + e.getMessage());
         }
         return transactions;
-    }
-
-    private String getAccountNumberFromTransaction(Transaction transaction) {
-        // This is a helper method to reconstruct account number from transaction data
-        // You might need to modify your Transaction class to store account number
-        return "UNKNOWN"; // Placeholder - you'll need to implement this properly
     }
 }

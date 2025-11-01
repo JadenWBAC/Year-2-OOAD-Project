@@ -1,3 +1,4 @@
-CUST001|INDIVIDUAL|John|Doe|ID123456|Plot 123, Gaborone|71234567|john.doe@email.com
-CUST002|INDIVIDUAL|Sarah|Wilson|ID789012|Plot 456, Francistown|71234568|sarah.wilson@email.com
-CUST003|COMPANY|ACME Corporation|CO123456|Plot 789, Gaborone|3901234|info@acme.co.bw
+CUST001|INDIVIDUAL|Jacob|Smith|ID123456|Plot 123, Gaborone|71234567|jacob@email.com
+CUST002|INDIVIDUAL|Theo|Johnson|ID789012|Plot 456, Francistown|71234568|theo@email.com
+CUST003|INDIVIDUAL|Sarah|Williams|ID345678|Plot 789, Maun|71234569|sarah@email.com
+CUST004|COMPANY|TechSolutions Ltd|BW000123456|Plot 321, Gaborone CBD|3901234|info@techsolutions.bw

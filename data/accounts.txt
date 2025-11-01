@@ -1,8 +1,10 @@
-ACC001|CUST001|SavingsAccount|1500.38|Main Branch||
-ACC002|CUST001|InvestmentAccount|5250.00|Main Branch||
-ACC003|CUST001|CheckingAccount|3000.00|Main Branch|Tech Solutions Ltd|Plot 789, Gaborone
-ACC004|CUST002|SavingsAccount|2500.63|Main Branch||
-ACC005|CUST002|CheckingAccount|4000.00|Main Branch|Finance Corp|Plot 321, Francistown
-ACC006|CUST003|SavingsAccount|15011.25|Main Branch||
-ACC007|CUST003|InvestmentAccount|31500.00|Main Branch||
-ACC008|CUST003|CheckingAccount|25000.00|Main Branch|ACME Corporation|Plot 789, Gaborone
+ACC001|CUST001|SavingsAccount|2000.00|Main Branch||
+ACC002|CUST001|InvestmentAccount|6000.00|Main Branch||
+ACC003|CUST001|CheckingAccount|5000.00|Main Branch|Tech Solutions Ltd|Plot 789, Gaborone
+ACC004|CUST002|SavingsAccount|3500.00|Main Branch||
+ACC005|CUST002|InvestmentAccount|10000.00|Main Branch||
+ACC006|CUST002|CheckingAccount|6000.00|Main Branch|Finance Corp|Plot 321, Francistown
+ACC007|CUST003|SavingsAccount|1000.00|Maun Branch||
+ACC008|CUST003|CheckingAccount|2000.00|Maun Branch|Safari Tours Ltd|Plot 456, Maun
+ACC009|CUST004|SavingsAccount|50000.00|Main Branch||
+ACC010|CUST004|CheckingAccount|75000.00|Main Branch|Self Employed|Plot 321, Gaborone CBD
