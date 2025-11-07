@@ -125,4 +125,9 @@ public class TellerDashboardController {
         customers.clear();
         loadAllDataFromFiles();
     }
+
+    public boolean openAccount(String customerId, String accountType, double initialBalance, String employerName, String employerAddress) {
+        return false;
+    }
+
 }

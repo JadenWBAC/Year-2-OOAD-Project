@@ -9,60 +9,83 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+/**
+ * TellerDashboardView - Boundary Class
+ * This view represents the bank teller's main dashboard interface.
+ * Why this?: Provide teller with tools to manage customers, accounts, and transactions
+ * - Teller can create customers, open accounts, process transactions, generate reports
+ */
 public class TellerDashboardView {
-    private Stage stage;
-    private TellerDashboardController controller;
+    // ===== ATTRIBUTES =====
+    private Stage stage;                              // JavaFX stage for displaying the view
+    private TellerDashboardController controller;     // Controller for handling teller actions
 
+    /**
+     * Constructor - Initialize the Teller Dashboard View
+     *
+     * @param stage The JavaFX stage to display the view
+     */
     public TellerDashboardView(Stage stage) {
         this.stage = stage;
         this.controller = new TellerDashboardController(stage);
         this.stage.setTitle("Teller Dashboard - Banking System");
     }
 
+    /**
+     * Display the teller dashboard interface
+     * This method creates and shows the main dashboard layout with tabs
+     */
     public void show() {
+        // ===== MAIN LAYOUT SETUP =====
         BorderPane layout = new BorderPane();
         layout.setStyle("-fx-background-color: #f5f5f5;");
 
-        // Top bar
+        // ===== CREATE TOP BAR =====
         HBox topBar = createTopBar();
 
-        // Center content with tabs for different functionalities
+        // ===== CREATE TABBED INTERFACE FOR TELLER FUNCTIONS =====
         TabPane tabPane = new TabPane();
 
-        // Customer Management Tab
+        // Tab 1: Customer Management - View and create customers
         Tab customersTab = new Tab("Customer Management");
         customersTab.setContent(createCustomersView());
         customersTab.setClosable(false);
 
-        // Transactions Tab
+        // Tab 2: Transactions - Process deposits and withdrawals
         Tab transactionsTab = new Tab("Transactions");
         transactionsTab.setContent(createTransactionsView());
         transactionsTab.setClosable(false);
 
-        // Account Management Tab
+        // Tab 3: Account Management - Open new accounts
         Tab accountsTab = new Tab("Account Management");
         accountsTab.setContent(createAccountsView());
         accountsTab.setClosable(false);
 
-        // Reports Tab
+        // Tab 4: Reports - Generate reports and apply interest
         Tab reportsTab = new Tab("Reports");
         reportsTab.setContent(createReportsView());
         reportsTab.setClosable(false);
 
         tabPane.getTabs().addAll(customersTab, transactionsTab, accountsTab, reportsTab);
 
+        // ===== ASSEMBLE THE LAYOUT =====
         layout.setTop(topBar);
         layout.setCenter(tabPane);
 
+        // ===== CREATE AND DISPLAY THE SCENE =====
         Scene scene = new Scene(layout, 1000, 700);
         stage.setScene(scene);
         stage.show();
     }
 
+    /**
+     * Create the top navigation bar
+     * Contains title and logout button
+     */
     private HBox createTopBar() {
         HBox topBar = new HBox();
         topBar.setPadding(new Insets(15));
-        topBar.setStyle("-fx-background-color: #2c3e50;");
+        topBar.setStyle("-fx-background-color: #2c3e50;");  // Dark blue-gray
 
         Label titleLabel = new Label("Teller Dashboard - Banking System");
         titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;");
@@ -73,6 +96,7 @@ public class TellerDashboardView {
         Button logoutButton = new Button("Logout");
         logoutButton.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white;");
         logoutButton.setOnAction(e -> {
+            // ACTION: Return to login screen
             LoginView loginView = new LoginView(stage);
             loginView.show();
         });
@@ -81,6 +105,10 @@ public class TellerDashboardView {
         return topBar;
     }
 
+    /**
+     * Create the Customer Management View Tab
+     * Displays list of all customers and allows creating new customers
+     */
     private VBox createCustomersView() {
         VBox customersBox = new VBox(15);
         customersBox.setPadding(new Insets(20));
@@ -89,30 +117,41 @@ public class TellerDashboardView {
         Label titleLabel = new Label("Customer Management");
         titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-        // Customer list
+        // ===== CUSTOMER LIST =====
         ListView<String> customerList = new ListView<>();
+        // Populate list with all customers
         for (Customer customer : controller.getAllCustomers()) {
             String customerInfo = String.format("%s - %s (%s) - %d accounts",
-                    customer.getCustomerId(), customer.getName(),
-                    customer.getClass().getSimpleName(), customer.getAccounts().size());
+                    customer.getCustomerId(),
+                    customer.getName(),
+                    customer.getClass().getSimpleName(),
+                    customer.getAccounts().size());
             customerList.getItems().add(customerInfo);
         }
 
-        // Action buttons for customer management
+        // ===== ACTION BUTTONS =====
         HBox buttonBox = new HBox(10);
-        Button viewCustomerBtn = new Button("View Customer Details");
-        Button newCustomerBtn = new Button("New Customer");
-        Button refreshBtn = new Button("Refresh List");
 
+        Button viewCustomerBtn = new Button("View Customer Details");
         viewCustomerBtn.setOnAction(e -> {
             String selected = customerList.getSelectionModel().getSelectedItem();
             if (selected != null) {
+                // Extract customer ID from selection
                 String customerId = selected.split(" - ")[0];
+                // ACTION: Show customer details
                 showCustomerDetails(customerId);
             }
         });
 
-        newCustomerBtn.setOnAction(e -> showNewCustomerDialog());
+        Button newCustomerBtn = new Button("New Customer");
+        newCustomerBtn.setOnAction(e -> {
+            // ACTION: Open new customer creation dialog
+            showNewCustomerDialog();
+            // Refresh list after creation
+            refreshCustomerList(customerList);
+        });
+
+        Button refreshBtn = new Button("Refresh List");
         refreshBtn.setOnAction(e -> refreshCustomerList(customerList));
 
         buttonBox.getChildren().addAll(viewCustomerBtn, newCustomerBtn, refreshBtn);
@@ -121,6 +160,10 @@ public class TellerDashboardView {
         return customersBox;
     }
 
+    /**
+     * Create the Transactions View Tab
+     * Allows teller to process deposits and withdrawals for any account
+     */
     private VBox createTransactionsView() {
         VBox transactionsBox = new VBox(15);
         transactionsBox.setPadding(new Insets(20));
@@ -129,19 +172,22 @@ public class TellerDashboardView {
         Label titleLabel = new Label("Transaction Processing");
         titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-        // Transaction form
+        // ===== TRANSACTION FORM =====
         GridPane formGrid = new GridPane();
         formGrid.setHgap(10);
         formGrid.setVgap(10);
         formGrid.setPadding(new Insets(15));
         formGrid.setStyle("-fx-background-color: white; -fx-border-color: #ddd;");
 
+        // Account number input
         TextField accountField = new TextField();
         accountField.setPromptText("Account Number");
 
+        // Amount input
         TextField amountField = new TextField();
         amountField.setPromptText("Amount");
 
+        // Transaction type selection
         ToggleGroup transactionType = new ToggleGroup();
         RadioButton depositRadio = new RadioButton("Deposit");
         RadioButton withdrawRadio = new RadioButton("Withdraw");
@@ -151,6 +197,7 @@ public class TellerDashboardView {
 
         HBox radioBox = new HBox(10, depositRadio, withdrawRadio);
 
+        // Process button
         Button processBtn = new Button("Process Transaction");
         processBtn.setStyle("-fx-background-color: #27ae60; -fx-text-fill: white;");
 
@@ -161,12 +208,15 @@ public class TellerDashboardView {
 
             try {
                 double amount = Double.parseDouble(amountText);
+
+                // ACTION: Delegate to controller to process transaction
                 boolean success = isDeposit ?
                         controller.processDeposit(accountNumber, amount) :
                         controller.processWithdrawal(accountNumber, amount);
 
                 if (success) {
                     showAlert("Success", "Transaction processed successfully!");
+                    // Clear form
                     accountField.clear();
                     amountField.clear();
                 } else {
@@ -177,6 +227,7 @@ public class TellerDashboardView {
             }
         });
 
+        // Layout form
         formGrid.add(new Label("Account Number:"), 0, 0);
         formGrid.add(accountField, 1, 0);
         formGrid.add(new Label("Amount:"), 0, 1);
@@ -189,6 +240,10 @@ public class TellerDashboardView {
         return transactionsBox;
     }
 
+    /**
+     * Create the Account Management View Tab
+     * Allows teller to open new accounts for existing customers
+     */
     private VBox createAccountsView() {
         VBox accountsBox = new VBox(15);
         accountsBox.setPadding(new Insets(20));
@@ -197,69 +252,81 @@ public class TellerDashboardView {
         Label titleLabel = new Label("Account Management");
         titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-        // Account creation form
+        // ===== ACCOUNT CREATION FORM =====
         GridPane formGrid = new GridPane();
         formGrid.setHgap(10);
         formGrid.setVgap(10);
         formGrid.setPadding(new Insets(15));
         formGrid.setStyle("-fx-background-color: white; -fx-border-color: #ddd;");
 
+        // Customer ID input
         TextField customerIdField = new TextField();
         customerIdField.setPromptText("Customer ID");
 
+        // Account type selection
         ComboBox<String> accountTypeCombo = new ComboBox<>();
         accountTypeCombo.getItems().addAll("Savings", "Investment", "Checking");
-        accountTypeCombo.setValue("Savings");
+        accountTypeCombo.setPromptText("Select Account Type");
 
+        // Initial balance input
         TextField initialBalanceField = new TextField();
         initialBalanceField.setPromptText("Initial Balance");
 
-        TextField employerField = new TextField();
-        employerField.setPromptText("Employer Name (for Checking accounts)");
-        employerField.setVisible(false);
+        // Employer fields (for Checking accounts only)
+        TextField employerNameField = new TextField();
+        employerNameField.setPromptText("Employer Name (for Checking only)");
+        employerNameField.setDisable(true);
 
         TextField employerAddressField = new TextField();
-        employerAddressField.setPromptText("Employer Address (for Checking accounts)");
-        employerAddressField.setVisible(false);
+        employerAddressField.setPromptText("Employer Address (for Checking only)");
+        employerAddressField.setDisable(true);
 
-        // Show/hide employer fields based on account type
+        // Enable employer fields when Checking is selected
         accountTypeCombo.setOnAction(e -> {
             boolean isChecking = "Checking".equals(accountTypeCombo.getValue());
-            employerField.setVisible(isChecking);
-            employerAddressField.setVisible(isChecking);
+            employerNameField.setDisable(!isChecking);
+            employerAddressField.setDisable(!isChecking);
         });
 
-        Button createAccountBtn = new Button("Create New Account");
-        createAccountBtn.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
+        // Open Account button
+        Button openAccountBtn = new Button("Open Account");
+        openAccountBtn.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
 
-        createAccountBtn.setOnAction(e -> {
+        openAccountBtn.setOnAction(e -> {
             String customerId = customerIdField.getText();
             String accountType = accountTypeCombo.getValue();
             String balanceText = initialBalanceField.getText();
+            String employerName = employerNameField.getText();
+            String employerAddress = employerAddressField.getText();
+
+            // VALIDATION: Check all required fields
+            if (customerId.isEmpty() || accountType == null || balanceText.isEmpty()) {
+                showAlert("Error", "Please fill in all required fields.");
+                return;
+            }
 
             try {
                 double initialBalance = Double.parseDouble(balanceText);
-                Customer customer = controller.findCustomerById(customerId);
 
-                if (customer != null) {
-                    Account newAccount = createAccount(accountType, initialBalance, customer,
-                            employerField.getText(), employerAddressField.getText());
+                // ACTION: Delegate to controller to open account
+                boolean success = controller.openAccount(customerId, accountType,
+                        initialBalance, employerName, employerAddress);
 
-                    if (newAccount != null) {
-                        controller.openNewAccount(customer, newAccount);
-                        showAlert("Success", "Account created successfully!");
-                        clearForm(customerIdField, initialBalanceField, employerField, employerAddressField);
-                    }
+                if (success) {
+                    showAlert("Success", "Account opened successfully!");
+                    // Clear form
+                    clearForm(customerIdField, initialBalanceField,
+                            employerNameField, employerAddressField);
+                    accountTypeCombo.setValue(null);
                 } else {
-                    showAlert("Error", "Customer not found!");
+                    showAlert("Error", "Failed to open account. Please check customer ID and requirements.");
                 }
             } catch (NumberFormatException ex) {
                 showAlert("Error", "Please enter a valid initial balance.");
-            } catch (IllegalArgumentException ex) {
-                showAlert("Error", ex.getMessage());
             }
         });
 
+        // Layout form
         formGrid.add(new Label("Customer ID:"), 0, 0);
         formGrid.add(customerIdField, 1, 0);
         formGrid.add(new Label("Account Type:"), 0, 1);
@@ -267,15 +334,19 @@ public class TellerDashboardView {
         formGrid.add(new Label("Initial Balance:"), 0, 2);
         formGrid.add(initialBalanceField, 1, 2);
         formGrid.add(new Label("Employer Name:"), 0, 3);
-        formGrid.add(employerField, 1, 3);
+        formGrid.add(employerNameField, 1, 3);
         formGrid.add(new Label("Employer Address:"), 0, 4);
         formGrid.add(employerAddressField, 1, 4);
-        formGrid.add(createAccountBtn, 1, 5);
+        formGrid.add(openAccountBtn, 1, 5);
 
         accountsBox.getChildren().addAll(titleLabel, formGrid);
         return accountsBox;
     }
 
+    /**
+     * Create the Reports View Tab
+     * Allows teller to generate reports and apply interest
+     */
     private VBox createReportsView() {
         VBox reportsBox = new VBox(15);
         reportsBox.setPadding(new Insets(20));
@@ -284,19 +355,23 @@ public class TellerDashboardView {
         Label titleLabel = new Label("Reports and Utilities");
         titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-        // Report buttons
+        // ===== REPORT BUTTONS =====
         VBox reportButtons = new VBox(10);
 
+        // Apply Interest button
         Button interestBtn = new Button("Apply Monthly Interest to All Accounts");
         interestBtn.setStyle("-fx-background-color: #9b59b6; -fx-text-fill: white;");
         interestBtn.setOnAction(e -> {
+            // ACTION: Apply interest to all eligible accounts
             controller.applyInterestToAllAccounts();
             showAlert("Success", "Monthly interest applied to all eligible accounts!");
         });
 
+        // Customer Report button
         Button customerReportBtn = new Button("Generate Customer Report");
         customerReportBtn.setOnAction(e -> generateCustomerReport());
 
+        // Transaction Report button
         Button transactionReportBtn = new Button("Generate Transaction Report");
         transactionReportBtn.setOnAction(e -> generateTransactionReport());
 
@@ -311,10 +386,23 @@ public class TellerDashboardView {
         return reportsBox;
     }
 
+    /**
+     * Create an account object based on type
+     * Helper method to instantiate the correct Account subclass
+     *
+     * @param accountType Type of account (Savings, Investment, Checking)
+     * @param initialBalance Starting balance
+     * @param customer The customer who owns the account
+     * @param employerName Employer name (for Checking accounts)
+     * @param employerAddress Employer address (for Checking accounts)
+     * @return Account object of the specified type
+     */
     private Account createAccount(String accountType, double initialBalance, Customer customer,
                                   String employerName, String employerAddress) {
+        // Generate unique account number
         String accountNumber = "ACC" + (System.currentTimeMillis() % 10000);
 
+        // Create appropriate account type
         switch (accountType) {
             case "Savings":
                 return new SavingsAccount(accountNumber, initialBalance, "Main Branch", customer);
@@ -328,9 +416,17 @@ public class TellerDashboardView {
         }
     }
 
+    /**
+     * Display detailed information about a customer
+     *
+     * customerId The customer ID to display
+     */
     private void showCustomerDetails(String customerId) {
+        // ACTION: Retrieve customer from controller
         Customer customer = controller.findCustomerById(customerId);
+
         if (customer != null) {
+            // Build detailed customer information
             StringBuilder details = new StringBuilder();
             details.append("Customer Details:\n");
             details.append("ID: ").append(customer.getCustomerId()).append("\n");
@@ -340,6 +436,7 @@ public class TellerDashboardView {
             details.append("Address: ").append(customer.getAddress()).append("\n");
             details.append("\nAccounts:\n");
 
+            // List all customer accounts
             for (Account account : customer.getAccounts()) {
                 details.append("- ").append(account.getClass().getSimpleName())
                         .append(" (").append(account.getAccountNumber()).append("): P")
@@ -350,13 +447,202 @@ public class TellerDashboardView {
         }
     }
 
+    /**
+     * Display dialog to create a new customer
+     */
     private void showNewCustomerDialog() {
-        // Implementation for creating new customers
-        showAlert("Coming Soon", "New customer creation will be implemented in the next phase");
+        // ===== CREATE CUSTOMER CREATION DIALOG =====
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Create New Customer");
+        dialog.setHeaderText("Enter customer information:");
+
+        // ===== CUSTOMER TYPE SELECTION =====
+        ComboBox<String> customerTypeCombo = new ComboBox<>();
+        customerTypeCombo.getItems().addAll("Individual", "Company");
+        customerTypeCombo.setPromptText("Select Customer Type");
+        customerTypeCombo.setPrefWidth(250);
+
+        // ===== COMMON FIELDS =====
+        TextField customerIdField = new TextField();
+        customerIdField.setPromptText("Customer ID (e.g., CUST001)");
+
+        TextField addressField = new TextField();
+        addressField.setPromptText("Address");
+
+        TextField phoneField = new TextField();
+        phoneField.setPromptText("Phone Number");
+
+        TextField emailField = new TextField();
+        emailField.setPromptText("Email");
+
+        // ===== INDIVIDUAL CUSTOMER FIELDS =====
+        TextField firstNameField = new TextField();
+        firstNameField.setPromptText("First Name");
+
+        TextField surnameField = new TextField();
+        surnameField.setPromptText("Surname");
+
+        TextField nationalIdField = new TextField();
+        nationalIdField.setPromptText("National ID");
+
+        // ===== COMPANY CUSTOMER FIELDS =====
+        TextField companyNameField = new TextField();
+        companyNameField.setPromptText("Company Name");
+
+        TextField companyNumberField = new TextField();
+        companyNumberField.setPromptText("Company Registration Number");
+
+        // ===== DYNAMIC FORM LAYOUT =====
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        // Always show common fields
+        grid.add(new Label("Customer Type:"), 0, 0);
+        grid.add(customerTypeCombo, 1, 0);
+        grid.add(new Label("Customer ID:"), 0, 1);
+        grid.add(customerIdField, 1, 1);
+
+        // Create containers for type-specific fields
+        VBox individualFields = new VBox(10);
+        individualFields.getChildren().addAll(
+                new Label("First Name:"),
+                firstNameField,
+                new Label("Surname:"),
+                surnameField,
+                new Label("National ID:"),
+                nationalIdField
+        );
+
+        VBox companyFields = new VBox(10);
+        companyFields.getChildren().addAll(
+                new Label("Company Name:"),
+                companyNameField,
+                new Label("Company Number:"),
+                companyNumberField
+        );
+
+        // Initially hide both
+        individualFields.setVisible(false);
+        companyFields.setVisible(false);
+
+        // ===== DYNAMIC FIELD DISPLAY BASED ON CUSTOMER TYPE =====
+        customerTypeCombo.setOnAction(e -> {
+            String selectedType = customerTypeCombo.getValue();
+            individualFields.setVisible("Individual".equals(selectedType));
+            companyFields.setVisible("Company".equals(selectedType));
+        });
+
+        // Add dynamic fields area
+        grid.add(new Label("Type-specific:"), 0, 2);
+        VBox typeFieldsContainer = new VBox(5);
+        typeFieldsContainer.getChildren().addAll(individualFields, companyFields);
+        grid.add(typeFieldsContainer, 1, 2);
+
+        // Common fields at bottom
+        grid.add(new Label("Address:"), 0, 3);
+        grid.add(addressField, 1, 3);
+        grid.add(new Label("Phone:"), 0, 4);
+        grid.add(phoneField, 1, 4);
+        grid.add(new Label("Email:"), 0, 5);
+        grid.add(emailField, 1, 5);
+
+        dialog.getDialogPane().setContent(grid);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        // ===== HANDLE CUSTOMER CREATION =====
+        dialog.showAndWait().ifPresent(result -> {
+            if (result == ButtonType.OK) {
+                String customerType = customerTypeCombo.getValue();
+
+                // VALIDATION: Check customer type is selected
+                if (customerType == null) {
+                    showAlert("Error", "Please select a customer type");
+                    return;
+                }
+
+                // Get common fields
+                String customerId = customerIdField.getText().trim();
+                String address = addressField.getText().trim();
+                String phone = phoneField.getText().trim();
+                String email = emailField.getText().trim();
+
+                // VALIDATION: Check common fields
+                if (customerId.isEmpty() || address.isEmpty() ||
+                        phone.isEmpty() || email.isEmpty()) {
+                    showAlert("Error", "Please fill in all required fields");
+                    return;
+                }
+
+                try {
+                    Customer newCustomer = null;
+
+                    if ("Individual".equals(customerType)) {
+                        // ===== CREATE INDIVIDUAL CUSTOMER =====
+                        String firstName = firstNameField.getText().trim();
+                        String surname = surnameField.getText().trim();
+                        String nationalId = nationalIdField.getText().trim();
+
+                        // VALIDATION: Check individual-specific fields
+                        if (firstName.isEmpty() || surname.isEmpty() || nationalId.isEmpty()) {
+                            showAlert("Error", "Please fill in all individual customer fields");
+                            return;
+                        }
+
+                        // Create IndividualCustomer object
+                        newCustomer = new IndividualCustomer(
+                                customerId, firstName, surname, nationalId,
+                                address, phone, email
+                        );
+
+                    } else if ("Company".equals(customerType)) {
+                        // ===== CREATE COMPANY CUSTOMER =====
+                        String companyName = companyNameField.getText().trim();
+                        String companyNumber = companyNumberField.getText().trim();
+
+                        // VALIDATION: Check company-specific fields
+                        if (companyName.isEmpty() || companyNumber.isEmpty()) {
+                            showAlert("Error", "Please fill in all company customer fields");
+                            return;
+                        }
+
+                        // Create CompanyCustomer object
+                        newCustomer = new CompanyCustomer(
+                                customerId, companyName, companyNumber,
+                                address, phone, email
+                        );
+                    }
+
+                    // ACTION: Save new customer through controller
+                    if (newCustomer != null) {
+                        controller.createNewCustomer(newCustomer);
+
+                        // Show success message
+                        showAlert("Success",
+                                String.format("Customer %s (%s) created successfully!",
+                                        newCustomer.getName(), newCustomer.getCustomerId()));
+
+                        System.out.println("New customer created: " + newCustomer.getName());
+                    }
+
+                } catch (Exception e) {
+                    showAlert("Error", "Failed to create customer: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
+    /**
+     * Refresh the customer list view
+     * Reloads all customers from the database/file
+     */
     private void refreshCustomerList(ListView<String> customerList) {
+        // Clear existing items
         customerList.getItems().clear();
+
+        // Reload from controller
         for (Customer customer : controller.getAllCustomers()) {
             String customerInfo = String.format("%s - %s (%s) - %d accounts",
                     customer.getCustomerId(), customer.getName(),
@@ -365,16 +651,22 @@ public class TellerDashboardView {
         }
     }
 
+    /**
+     * Generate a customer report
+     * Shows a summary of all customers and their accounts
+     */
     private void generateCustomerReport() {
         StringBuilder report = new StringBuilder();
         report.append("=== CUSTOMER REPORT ===\n\n");
 
+        // Iterate through all customers
         for (Customer customer : controller.getAllCustomers()) {
             report.append("Customer: ").append(customer.getName()).append("\n");
             report.append("ID: ").append(customer.getCustomerId()).append("\n");
             report.append("Type: ").append(customer.getClass().getSimpleName()).append("\n");
             report.append("Total Accounts: ").append(customer.getAccounts().size()).append("\n");
 
+            // Calculate total balance across all accounts
             double totalBalance = customer.getAccounts().stream()
                     .mapToDouble(Account::getBalance)
                     .sum();
@@ -382,14 +674,18 @@ public class TellerDashboardView {
             report.append("------------------------\n");
         }
 
-        // In a real application, you would display this in the report area
         showAlert("Customer Report", report.toString());
     }
 
+    /**
+     * Generate a transaction report
+     * Shows all transactions for all accounts
+     */
     private void generateTransactionReport() {
         StringBuilder report = new StringBuilder();
         report.append("=== TRANSACTION REPORT ===\n\n");
 
+        // Iterate through all customers and their accounts
         for (Customer customer : controller.getAllCustomers()) {
             report.append("Customer: ").append(customer.getName()).append("\n");
 
@@ -399,6 +695,7 @@ public class TellerDashboardView {
                 report.append("  Balance: P").append(String.format("%.2f", account.getBalance())).append("\n");
                 report.append("  Transactions: ").append(account.getTransactions().size()).append("\n");
 
+                // List all transactions
                 for (Transaction transaction : account.getTransactions()) {
                     report.append("    - ").append(transaction.toString()).append("\n");
                 }
@@ -410,12 +707,19 @@ public class TellerDashboardView {
         showAlert("Transaction Report", report.toString());
     }
 
+    /**
+     * Clear multiple text fields
+     * Helper method to reset form inputs
+     */
     private void clearForm(TextField... fields) {
         for (TextField field : fields) {
             field.clear();
         }
     }
 
+    /**
+     * Display an alert dialog
+     */
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
