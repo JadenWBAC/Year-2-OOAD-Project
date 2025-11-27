@@ -8,3 +8,5 @@ ACC007|CUST003|SavingsAccount|1000.00|Maun Branch||
 ACC008|CUST003|CheckingAccount|2000.00|Maun Branch|Safari Tours Ltd|Plot 456, Maun
 ACC009|CUST004|SavingsAccount|50000.00|Main Branch||
 ACC010|CUST004|CheckingAccount|75000.00|Main Branch|Self Employed|Plot 321, Gaborone CBD
+ACC035|CUST005|InvestmentAccount|1000.00|Main Branch||
+ACC283|CUST006|InvestmentAccount|5100.00|Main Branch||

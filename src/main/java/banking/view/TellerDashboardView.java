@@ -1,5 +1,6 @@
 package banking.view;
 
+import banking.dao.impl.TextFileUserDAO;
 import banking.controller.TellerDashboardController;
 import banking.model.*;
 import javafx.geometry.Insets;
@@ -450,11 +451,14 @@ public class TellerDashboardView {
     /**
      * Display dialog to create a new customer
      */
+    /**
+     * Display dialog to create a new customer WITH username/password
+     */
     private void showNewCustomerDialog() {
         // ===== CREATE CUSTOMER CREATION DIALOG =====
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Create New Customer");
-        dialog.setHeaderText("Enter customer information:");
+        dialog.setHeaderText("Enter customer information and login credentials:");
 
         // ===== CUSTOMER TYPE SELECTION =====
         ComboBox<String> customerTypeCombo = new ComboBox<>();
@@ -474,6 +478,13 @@ public class TellerDashboardView {
 
         TextField emailField = new TextField();
         emailField.setPromptText("Email");
+
+        // ===== LOGIN CREDENTIALS FIELDS =====
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Username (for login)");
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Password (min 4 characters)");
 
         // ===== INDIVIDUAL CUSTOMER FIELDS =====
         TextField firstNameField = new TextField();
@@ -548,6 +559,15 @@ public class TellerDashboardView {
         grid.add(new Label("Email:"), 0, 5);
         grid.add(emailField, 1, 5);
 
+        // Login credentials section
+        grid.add(new Label("Login Credentials:"), 0, 6);
+        grid.add(new Label(""), 1, 6); // Spacer
+
+        grid.add(new Label("Username:"), 0, 7);
+        grid.add(usernameField, 1, 7);
+        grid.add(new Label("Password:"), 0, 8);
+        grid.add(passwordField, 1, 8);
+
         dialog.getDialogPane().setContent(grid);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
@@ -567,11 +587,19 @@ public class TellerDashboardView {
                 String address = addressField.getText().trim();
                 String phone = phoneField.getText().trim();
                 String email = emailField.getText().trim();
+                String username = usernameField.getText().trim();
+                String password = passwordField.getText().trim();
 
-                // VALIDATION: Check common fields
-                if (customerId.isEmpty() || address.isEmpty() ||
-                        phone.isEmpty() || email.isEmpty()) {
+                // VALIDATION: Check all required fields
+                if (customerId.isEmpty() || address.isEmpty() || phone.isEmpty() ||
+                        email.isEmpty() || username.isEmpty() || password.isEmpty()) {
                     showAlert("Error", "Please fill in all required fields");
+                    return;
+                }
+
+                // VALIDATION: Check password length
+                if (password.length() < 4) {
+                    showAlert("Error", "Password must be at least 4 characters long");
                     return;
                 }
 
@@ -616,14 +644,21 @@ public class TellerDashboardView {
 
                     // ACTION: Save new customer through controller
                     if (newCustomer != null) {
+                        // First save the customer
                         controller.createNewCustomer(newCustomer);
+
+                        // Then create user account with provided credentials
+                        User user = new User(username, password, "CUSTOMER", newCustomer);
+                        TextFileUserDAO userDAO = new TextFileUserDAO();
+                        userDAO.saveUser(user);
 
                         // Show success message
                         showAlert("Success",
-                                String.format("Customer %s (%s) created successfully!",
-                                        newCustomer.getName(), newCustomer.getCustomerId()));
+                                String.format("Customer %s (%s) created successfully!\n\n" +
+                                                "Login Credentials:\nUsername: %s\nPassword: [hidden]",
+                                        newCustomer.getName(), newCustomer.getCustomerId(), username));
 
-                        System.out.println("New customer created: " + newCustomer.getName());
+                        System.out.println("New customer created: " + newCustomer.getName() + " with username: " + username);
                     }
 
                 } catch (Exception e) {

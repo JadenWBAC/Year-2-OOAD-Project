@@ -12,12 +12,14 @@ public class TellerDashboardController {
     private Stage stage;
     private CustomerDAO customerDAO;
     private AccountDAO accountDAO;
+    private UserDAO userDAO;
     private List<Customer> customers;
 
     public TellerDashboardController(Stage stage) {
         this.stage = stage;
         this.customerDAO = new TextFileCustomerDAO();
         this.accountDAO = new TextFileAccountDAO();
+        this.userDAO = new TextFileUserDAO();
         this.customers = new ArrayList<>();
 
         // Load all data from existing text files
@@ -64,6 +66,12 @@ public class TellerDashboardController {
     public void createNewCustomer(Customer customer) {
         customers.add(customer);
         customerDAO.saveCustomer(customer);
+
+        // AUTO-CREATE USER ACCOUNT FOR THE NEW CUSTOMER
+        User newUser = ((TextFileUserDAO) userDAO).createCustomerUser(customer);
+
+        System.out.println("Customer created: " + customer.getName() +
+                " | Login: " + newUser.getUsername() + " / 123456");
     }
 
     public void openNewAccount(Customer customer, Account account) {
@@ -126,8 +134,60 @@ public class TellerDashboardController {
         loadAllDataFromFiles();
     }
 
-    public boolean openAccount(String customerId, String accountType, double initialBalance, String employerName, String employerAddress) {
-        return false;
-    }
+    public boolean openAccount(String customerId, String accountType, double initialBalance,
+                               String employerName, String employerAddress) {
+        try {
+            // Find the customer
+            Customer customer = findCustomerById(customerId);
+            if (customer == null) {
+                System.out.println("Customer not found: " + customerId);
+                return false;
+            }
 
+            // Generate unique account number
+            String accountNumber = "ACC" + String.format("%03d", (int)(System.currentTimeMillis() % 1000));
+
+            // Create the appropriate account type
+            Account account;
+            String branch = "Main Branch"; // Default branch
+
+            switch (accountType.toUpperCase()) {
+                case "SAVINGS":
+                    if (initialBalance < 50.0) {
+                        System.out.println("Savings account requires minimum P50.00 initial deposit");
+                        return false;
+                    }
+                    account = new SavingsAccount(accountNumber, initialBalance, branch, customer);
+                    break;
+
+                case "INVESTMENT":
+                    if (initialBalance < 500.0) {
+                        System.out.println("Investment account requires minimum P500.00 initial deposit");
+                        return false;
+                    }
+                    account = new InvestmentAccount(accountNumber, initialBalance, branch, customer);
+                    break;
+
+                case "CHECKING":
+                    account = new CheckingAccount(accountNumber, initialBalance, branch, customer,
+                            employerName, employerAddress);
+                    break;
+
+                default:
+                    System.out.println("Invalid account type: " + accountType);
+                    return false;
+            }
+
+            // Save the account
+            openNewAccount(customer, account);
+
+            System.out.println("Account created successfully: " + accountNumber + " for customer: " + customerId);
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("Error opening account: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

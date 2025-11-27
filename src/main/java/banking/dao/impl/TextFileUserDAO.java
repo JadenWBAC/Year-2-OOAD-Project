@@ -171,4 +171,38 @@ public class TextFileUserDAO implements UserDAO {
                 .findFirst()
                 .orElse(null);
     }
+
+    /**
+     * Create a user account for a new customer with auto-generated credentials
+     */
+    public User createCustomerUser(Customer customer) {
+        // Generate username from customer name (you can make this more sophisticated)
+        String username = generateUsername(customer.getName());
+
+        // Generate temporary password (you can make this configurable)
+        String tempPassword = "123456"; // Simple default password
+
+        // Create and save the user
+        User user = new User(username, tempPassword, "CUSTOMER", customer);
+        saveUser(user);
+
+        return user;
+    }
+
+    /**
+     * Generate a unique username from customer name
+     */
+    private String generateUsername(String customerName) {
+        String baseUsername = customerName.replaceAll("\\s+", "").toLowerCase();
+        String username = baseUsername;
+        int counter = 1;
+
+        // Ensure username is unique
+        while (findUserByUsername(username) != null) {
+            username = baseUsername + counter;
+            counter++;
+        }
+
+        return username;
+    }
 }

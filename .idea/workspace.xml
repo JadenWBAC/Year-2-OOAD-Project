@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="Updated DAOs and fixed a couple of bugs I'v been experiencing whilst running the code. And added a data initializer for easy insertion of code too">
+    <list default="true" id="9a35cf23-814f-4fc1-b6e4-2b8cc45fc907" name="Changes" comment="Debugged a whole bunch of code and added some functionality to both the Tellers and Customers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/accounts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/accounts.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/customers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/customers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/banking/controller/TellerDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/controller/TellerDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/model/InvestmentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/InvestmentAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/model/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/model/SavingsAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/CustomerDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banking/dao/impl/TextFileUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/dao/impl/TextFileUserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/banking/view/TellerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/view/TellerDashboardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/banking/model/SavingsAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/banking/model/InvestmentAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/banking/model/InvestmentAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/banking/view/CustomerDashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/banking/view/CustomerDashboardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/banking/view/TellerDashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/banking/view/TellerDashboardView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +150,10 @@
       <workItem from="1761290356096" duration="2950000" />
       <workItem from="1761730949950" duration="629000" />
       <workItem from="1761943105394" duration="4999000" />
-      <workItem from="1762520652983" duration="2454000" />
+      <workItem from="1762520652983" duration="3790000" />
+      <workItem from="1763479878192" duration="1619000" />
+      <workItem from="1763582574251" duration="622000" />
+      <workItem from="1764229138094" duration="2180000" />
     </task>
     <task id="LOCAL-00001" summary="Added controller classes as well as updated some relevant data within the project">
       <option name="closed" value="true" />
@@ -198,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761982172661</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Debugged a whole bunch of code and added some functionality to both the Tellers and Customers">
+      <option name="closed" value="true" />
+      <created>1762526307510</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762526307510</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +223,8 @@
     <MESSAGE value="Updated TellerDashboard, added a controller for it as well as updated Test once more" />
     <MESSAGE value="Updated DAO, Creating text files and adding data for database" />
     <MESSAGE value="Updated DAOs and fixed a couple of bugs I'v been experiencing whilst running the code. And added a data initializer for easy insertion of code too" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated DAOs and fixed a couple of bugs I'v been experiencing whilst running the code. And added a data initializer for easy insertion of code too" />
+    <MESSAGE value="Debugged a whole bunch of code and added some functionality to both the Tellers and Customers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Debugged a whole bunch of code and added some functionality to both the Tellers and Customers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
